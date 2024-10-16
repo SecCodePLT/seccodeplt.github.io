@@ -1,157 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SecCodePLT Sample Explorer</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <link rel="shortcut icon" href="#" />
-    <link href="static/css/prism.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-          rel="stylesheet">
-  
-    <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"> <!-- <link rel="stylesheet" href="./static/css/index.css"> -->
-    <link rel="icon" href="./static/images/favicon.svg">
-  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="./static/js/fontawesome.all.min.js"></script>
-    <script src="./static/js/bulma-carousel.min.js"></script>
-    <script src="./static/js/bulma-slider.min.js"></script>
-    <script src="./static/js/index.js"></script>
-    <script src="./utils.js"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecCodePLT Sample Explorer</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="shortcut icon" href="#" />
+  <link href="static/css/prism.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/index.css"> -->
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./utils.js"></script>
 
 
-    <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
-      pre {
-        padding: 0;
-      }
+    pre {
+      padding: 0;
+    }
 
-      .container {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        width: 100%;
-      }
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      width: 100%;
+    }
 
-      .header,
-      .buttons,
-      .footer,
-      .key {
-        flex-shrink: 0;
-      }
+    .header,
+    .buttons,
+    .footer,
+    .key {
+      flex-shrink: 0;
+    }
 
-      .header {
-        margin-top: 10px;
-        margin-bottom: 10px;
-      }
+    .header {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
 
-      .footer {
-        padding: 10px;
-        font-size: 12px;
-      }
+    .footer {
+      padding: 10px;
+      font-size: 12px;
+    }
 
-      .scrollable-div {
-        /* flex-grow: 1; */
-        height: calc(100vh - 460px);
-        overflow-y: auto;
-        background-color: #f5f5f5;
-        padding: 10px;
-        border-radius: 10px;
-        border: 1px solid black;
-      }
+    .scrollable-div {
+      /* flex-grow: 1; */
+      height: calc(100vh - 460px);
+      overflow-y: auto;
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid black;
+    }
 
-      .buttons {
-        margin-top: 10px;
-      }
+    .buttons {
+      margin-top: 10px;
+    }
 
-      .btn {
-        margin-bottom: 7px;
-      }
+    .btn {
+      margin-bottom: 7px;
+    }
 
-      .left-col {
-        width: 200px; /* Adjust this value as per your requirement */
-      }
+    .left-col {
+      width: 200px;
+      /* Adjust this value as per your requirement */
+    }
 
-      .left-half {
-        width: 50%; /* Adjust this value as per your requirement */
-      }
+    .left-half {
+      width: 50%;
+      /* Adjust this value as per your requirement */
+    }
 
-      .table {
-        background-color: #f5f5f5;
-      }
+    .table {
+      background-color: #f5f5f5;
+    }
 
-      table tr,
-      table td {
-        border: none !important;
-      }
+    table tr,
+    table td {
+      border: none !important;
+    }
 
-      .bottom-border {
-        border-bottom: 1px solid gray !important;
-      }
+    .bottom-border {
+      border-bottom: 1px solid gray !important;
+    }
 
-      .generation {
-        background-color: #3ebd66; /* Color for "Correct" */
-      }
+    .generation {
+      background-color: #3ebd66;
+      /* Color for "Correct" */
+    }
 
-      .generation.correct {
-        background-color: #3ebd66; /* Color for "Correct" */
-      }
+    .generation.correct {
+      background-color: #3ebd66;
+      /* Color for "Correct" */
+    }
 
-      .generation.incorrect{
-        background-color: rgb(255 187 187); /* Color for "Incorrect" */
-      }
+    .generation.incorrect {
+      background-color: rgb(255 187 187);
+      /* Color for "Incorrect" */
+    }
 
-      code {
-        padding: 0;
-      }
-    </style>
+    .chat-role {
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-  </head>
+    .chat-user-message {
+      font-size: 12px;
+      height: 200px;
+      overflow-y: auto;
+      background-color: rgba(220, 187, 255, 0.168);
+      border: solid 2px;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
 
-  <body>
-    <script src="static/js/prism.js"></script>
+    .chat-assistant-message {
+      font-size: 12px;
+      height: 200px;
+      overflow-y: auto;
+      background-color: rgba(223, 255, 187, 0.156);
+      border: solid 2px;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
 
-    <div id="content" class="container-fluid d-flex flex-column align-items-center gap-3">
-      <h1 style="padding-top: 20px;" class="title is-1 publication-title">🔎 SecCodePLT Sample Explorer 🔎</h1>
-      <h3 class="fw-light text-center title is-3"><small id="warning">SecCodePLT is a unified and comprehensive evaluation platform for code GenAIs' risks.<br></small></h2>
+    code[class*="language-"],
+    pre[class*="language-"] {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+
+</head>
+
+<body>
+  <script src="static/js/prism.js" data-manual>
+    Prism.hooks.add("before-highlight", function (env) {
+      env.code = env.element.innerText;
+    });
+    Prism.highlightElement(code);
+  </script>
+
+  <div id="content" class="container-fluid d-flex flex-column align-items-center gap-3">
+    <h1 style="padding-top: 20px;" class="title is-1 publication-title">🔎 SecCodePLT Sample Explorer 🔎</h1>
+    <h3 class="fw-light text-center title is-3"><small id="warning">SecCodePLT is a unified and comprehensive evaluation
+        platform for code GenAIs' risks.<br></small></h2>
       <div class="column has-text-centered">
         <div class="publication-links">
           <span class="link-block">
-          <a href="./index.html"
-              class="external-link button is-normal is-rounded is-dark">
+            <a href="./index.html" class="external-link button is-normal is-rounded is-dark">
               <span class="icon">
-                  <i class="fas fa-home"></i>
+                <i class="fas fa-home"></i>
               </span>
               <span>Homepage</span>
-          </a>
+            </a>
           </span>
 
           <span class="link-block">
-          <a href="https://arxiv.org/pdf/2410.11096" target="_blank"
+            <a href="https://arxiv.org/pdf/2410.11096" target="_blank"
               class="external-link button is-normal is-rounded is-dark">
               <span class="icon">
-                  <i class="fas fa-file-pdf"></i>
+                <i class="fas fa-file-pdf"></i>
               </span>
               <span>Paper</span>
-          </a>
+            </a>
           </span>
 
           <!-- <span class="link-block">
@@ -165,13 +201,13 @@
           </span> -->
 
           <span class="link-block">
-          <a href="https://huggingface.co/datasets/Virtue-AI-HUB/SecCodePLT"
+            <a href="https://huggingface.co/datasets/Virtue-AI-HUB/SecCodePLT"
               class="external-link button is-normal is-rounded is-dark">
               <span class="icon">
-                  <i class="far fa-images"></i>
+                <i class="far fa-images"></i>
               </span>
               <span>HF Dataset</span>
-          </a>
+            </a>
           </span>
 
           <!-- <span class="link-block">
@@ -186,400 +222,373 @@
 
         </div>
       </div>
-    
-    <br>
-    <div class="container">
 
-      <!-- Buttons -->
-      <div class="buttons text-center mb-3">
-        <button
-          type="button"
-          class="btn btn-primary active mr-2"
-          id="insecure_coding_btn"
-          onclick="selectTaskType('insecure_coding')"
-        >
-          Insecure Coding
-        </button>
-        <button
-          type="button"
-          class="btn btn-light ml-2"
-          id="cyberattack_helpfulness_btn"
-          onclick="selectTaskType('cyberattack_helpfulness')"
-          disabled
-        >
-          Cyberattack Helpfulness
-        </button>
-        <script>
-          // Set insecure coding as default on page load
-          window.onload = function() {
-            selectTaskType('insecure_coding');
-          };
-        </script>
-        <script>
-        function selectTaskType(taskType) {
-          document.getElementById('task_type').value = taskType;
-          updateTypeOptions();
-          updateModelOptions(); // Add this line
-          document.getElementById('insecure_coding_btn').classList.toggle('btn-primary', taskType === 'insecure_coding');
-          document.getElementById('insecure_coding_btn').classList.toggle('btn-light', taskType !== 'insecure_coding');
-          document.getElementById('cyberattack_helpfulness_btn').classList.toggle('btn-primary', taskType === 'cyberattack_helpfulness');
-          document.getElementById('cyberattack_helpfulness_btn').classList.toggle('btn-light', taskType !== 'cyberattack_helpfulness');
-        }
-        </script>
-      </div>
+      <br>
+      <div class="container">
 
-      <tr>
-        <td>
-          <label for="models">Model:</label> 
-          <select name="model-names" id="models"></select>
-          &nbsp;
-          &nbsp;
+        <!-- Buttons -->
+        <div class="buttons text-center mb-3">
+          <button type="button" class="btn btn-primary active mr-2" id="insecure_coding_btn"
+            onclick="selectTaskType('insecure_coding')">
+            Insecure Coding
+          </button>
+          <button type="button" class="btn btn-light ml-2" id="cyberattack_helpfulness_btn"
+            onclick="selectTaskType('cyberattack_helpfulness')">
+            Cyberattack Helpfulness
+          </button>
+        </div>
+        <div class="rows">
           <input type="hidden" name="task_type" id="task_type" value="insecure_coding">
-          <label for="sub_type" id="sub_type_label">Vulnerability Type (CWE):</label>
-          <select name="sub_type" id="sub_type"></select>
-          <script>
-          function updateModelOptions() {
-            var taskType = document.getElementById("task_type").value;
-            var modelSelect = document.getElementById("models");
-            
-            modelSelect.innerHTML = ''; // Clear existing options
-            
-            if (taskType === "insecure_coding") {
-              var options = INSECURE_CODING_MODELS.map((model) => { return {value: model, text: getModelDisplayName(model)}})
-            } else if (taskType === "cyberattack_helpfulness") {
-              var options = [
-                {value: "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo", text: "LLaMA-3.1-70B"},
-                {value: "gpt-4o-2024-08-06", text: "GPT-4o"},  
-                {value: "claude-3.5-sonnet", text: "Claude-3.5-Sonnet"}
-              ];
-            }
-            
-            options.forEach(function(option) {
-              var opt = document.createElement('option');
-              opt.value = option.value;
-              opt.textContent = option.text;
-              modelSelect.appendChild(opt);
-            });
-          }
-
-          function updateTypeOptions() {
-            var taskType = document.getElementById("task_type").value;
-            var subTypeSelect = document.getElementById("sub_type");
-            var subTypeLabel = document.getElementById("sub_type_label");
-            
-            subTypeSelect.innerHTML = ''; // Clear existing options
-            
-            if (taskType === "insecure_coding") {
-              subTypeLabel.textContent = "Vulnerability Type (CWE):";
-              var options = CWE_IDS.map((cwe) => {return {value: cwe, text: getCWEDescription(cwe)} })
-            } else if (taskType === "cyberattack_helpfulness") {
-              subTypeLabel.textContent = "Cyberattack Type:";
-              var options = ["Reconnaissance", "Weaponization & Infiltration", "Command and control (C2) & Execution", "Discovery", "Collection"];
-            }
-            
-            options.forEach(function(option) {
-              var opt = document.createElement('option');
-              opt.value = option.value;
-              opt.textContent = option.text;
-              subTypeSelect.appendChild(opt);
-            });
-          }
-
-          // Call updateModelOptions and updateTypeOptions immediately
-          updateModelOptions();
-          updateTypeOptions();
-
-          // Also call them when the task type changes
-          document.getElementById('task_type').addEventListener('change', function() {
-            updateModelOptions();
-            updateTypeOptions();
-          });
-
-          // Ensure options are populated on page load
-          document.addEventListener('DOMContentLoaded', function() {
-            updateModelOptions();
-            updateTypeOptions();
-          });
-          </script>
-        </td>
-      </tr>
-      &nbsp;
-      &nbsp;
-      <tr>
-        <td>
-          <label for="security_policy">Security Policy:</label>
-          <select name="security_policy" id="security_policy">
-            <option value="provided">Provided</option>
-            <option value="not_provided">Not Provided</option>
-          </select>
-        </td>
-      </tr>
-      &nbsp;
-      &nbsp;
-      <!-- Scrollable Content Area -->
-      <div class="row">
-        <div class="col-md-6">
-          <h4>Text-to-Code</h4>
-          <div class="scrollable-div">
-            <table class="table">
-              <tr>
-                <td>
-                  <b>Task Description</b>
-                  <pre id="text_to_code_desc"><span style="font-family: Arial, sans-serif; white-space: pre-wrap; word-wrap: break-word;"></span></pre>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <b>Model Response</b>
-                  <pre><code class="language-python" id="text_to_code_response"></code></pre>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <b>Metrics</b>
-                  <div id="text_to_code_metrics"></div>
-                </td>
-              </tr>
-            </table>
+          <div class="row-md-6 mb-1">
+            <label for="models">Model:</label>
+            <select name="model-names" id="models" style="width: 100%;"></select>
+          </div>
+          <div class="row-md-6 mb-1">
+            <label for="sub_type" id="sub_type_label">Vulnerability Type (CWE):</label>
+            <select name="sub_type" id="sub_type" style="width: 100%;"></select>
+          </div>
+          <div class="row-md-6 mb-1" id="security_policy_field">
+            <label for="security_policy">Security Policy:</label>
+            <select name="security_policy" id="security_policy" style="width: 100%;">
+              <option value="provided">Provided</option>
+              <option value="not_provided">Not Provided</option>
+            </select>
+          </div>
+          <!-- Scrollable Content Area -->
+          <div class="row mt-2" id="insecure_coding_viewer">
+            <div class="col-md-6">
+              <h4 class="mb-1">Text-to-Code</h4>
+              <div class="scrollable-div" style="font-size: 14px;">
+                <table class="table">
+                  <tr>
+                    <td>
+                      <b>Task Description</b>
+                      <pre id="text_to_code_desc"
+                        style="white-space: pre-wrap; word-wrap: break-word;"><span style="font-family: Arial, sans-serif;"></span></pre>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Model Response</b>
+                      <pre><code class="language-python" id="text_to_code_response"></code></pre>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Metrics</b>
+                      <div id="text_to_code_metrics"></div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4 class="mb-1">Autocompletion</h4>
+              <div class="scrollable-div" style="font-size: 14px;">
+                <table class="table">
+                  <tr>
+                    <td>
+                      <b>Task Description</b>
+                      <pre id="autocompletion_prompt"
+                        style="white-space: pre-wrap; word-wrap: break-word;"><span style="font-family: Arial, sans-serif;"></pre>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Model Response</b>
+                      <pre><code class="language-python" id="autocompletion_response"></code></pre>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Metrics</b>
+                      <div id="autocompletion_metrics"></div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <h4>Autocompletion</h4>
-          <div class="scrollable-div">
-            <table class="table">
-              <tr>
-                <td>
-                  <b>Task Description</b>
-                  <pre id="autocompletion_prompt"><span style="font-family: Arial, sans-serif; white-space: pre-wrap; word-wrap: break-word;"></pre>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <b>Model Response</b>
-                  <pre><code class="language-python" id="autocompletion_response"></code></pre>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <b>Metrics</b>
-                  <div id="autocompletion_metrics"></div>
-                </td>
-              </tr>
-            </table>
+        <div class="row mt-2" id="cyberattack_helpfulness_viewer">
+          <div class="col-md-12 mb-1">
+            <h4 class="mb-1">System Prompt</h4>
+            <div class="scrollable-div" style="font-size: 14px;">
+              <pre id="cyberattack_helpfulness_system_prompt"
+                style="white-space: pre-wrap; word-wrap: break-word;"></pre>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <h4 class="mb-1">Chat History</h4>
+            <div class="scrollable-div" id="cyberattack_helpfulness_chat_history">
+            </div>
+          </div>
+        </div>
+        <div class="navigation-buttons text-center mt-2">
+          <button type="button" id="leftButton" class="btn btn-secondary">
+            &lt;&lt;
+          </button>
+          <button type="button" id="randButton" class="btn btn-secondary">
+            ??
+          </button>
+          <button type="button" id="rightButton" class="btn btn-secondary">
+            &gt;&gt;
+          </button>
+          <div class="mt-2">
+            <span id="currentPage">1</span> / <span id="totalPages">(loading...)</span>
           </div>
         </div>
       </div>
 
-      <div class="navigation-buttons text-center mt-3">
-        <button type="button" id="leftButton" class="btn btn-secondary">
-          &lt;&lt;
-        </button>
-        <button type="button" id="randButton" class="btn btn-secondary">
-          ??
-        </button>
-        <button type="button" id="rightButton" class="btn btn-secondary">
-          &gt;&gt;
-        </button>
-        <div class="mt-2">
-          <span id="currentPage">1</span> / <span id="totalPages">(loading...)</span>
-        </div>
-      </div>
 
-      <!-- Footer -->
-      <div class="footer text-center mt-3">
-        The sample explorer is inspired by and based on
-        <a href="https://minerva-demo.github.io">Minerva</a>,
-        <a href="https://llemma-demo.github.io/">Llemma</a>, and
-        <a href="https://cruxeval.github.io/">CruxEval</a>. Thanks!
-      </div>
+  </div>
+  <!-- Footer -->
+  <div class="footer text-center mt-3">
+    The sample explorer is inspired by and based on
+    <a href="https://minerva-demo.github.io">Minerva</a>,
+    <a href="https://llemma-demo.github.io/">Llemma</a>, and
+    <a href="https://cruxeval.github.io/">CruxEval</a>. Thanks!
+  </div>
 
 
-    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script>
-      $(document).ready(function () {
-        let searchParams = new URLSearchParams(window.location.search);
-        let currentPage = 1
-        if (searchParams.has("id")) {
-          currentPage = searchParams.get('id')
+  <script>
+    $(document).ready(function () {
+      // let searchParams = new URLSearchParams(window.location.search);
+      let currentPage = 1;
+      let taskType = document.getElementById('task_type').value;
+      let currentModel = document.getElementById('models').value;
+      let currentWithPolicy = document.getElementById('security_policy').value;
+      let currentSubType = document.getElementById('sub_type').value;
+      let totalPages = "loading...";
+
+      selectTaskType(taskType);
+
+      const initStatus = () => {
+        currentPage = 1;
+        taskType = document.getElementById('task_type').value;
+        currentModel = document.getElementById('models').value;
+        currentWithPolicy = document.getElementById('security_policy').value;
+        currentSubType = document.getElementById('sub_type').value;
+        totalPages = "loading...";
+        $("#currentPage").text(currentPage);
+        updateButtonStatus();
+      }
+
+      initStatus();
+
+
+      // if (searchParams.has("task_type")) {
+      //   let taskType = searchParams.get("task_type");
+      //   document.getElementById("taskTypeSelect").value = taskType;
+      //   selectTaskType(taskType);
+      // }
+      async function _updateInsecureCodingData(idx, model, withPolicy, cweID) {
+        const results = await loadInsecureCodingResults(model, withPolicy, cweID);
+
+        function displayMetrics(metrics) {
+          return `<span class="metric">Security: ${metrics.security}</span><br><span class="metric"> Functionality: ${metrics.capability} </span>`;
         }
-      
-        let currentModel = document.getElementById('models').value;
-        let currentWithPolicy = document.getElementById('security_policy').value;
-        let currentCWE = document.getElementById('sub_type').value;
-        let totalPages = "loading...";
-        
-        if (searchParams.has("task_type")) {
-          let taskType = searchParams.get("task_type");
-          document.getElementById("taskTypeSelect").value = taskType;
-          selectTaskType(taskType);
+
+        totalPages = results.length;
+        $("#totalPages").text(totalPages);
+
+
+        const sampleData_instruct = results[idx - 1][0];
+        const sampleData_autocompletion = results[idx - 1][1];
+
+        if (sampleData_instruct !== null) {
+          let prompt_instruct = sampleData_instruct.messages[0].content;
+          let response_instruct = sampleData_instruct.response;
+          let metricsHtml_instruct = displayMetrics(sampleData_instruct.metrics.new);
+          document.getElementById("text_to_code_desc").textContent = prompt_instruct;
+          document.getElementById("text_to_code_response").textContent =
+            response_instruct;
+          document.getElementById("text_to_code_metrics").innerHTML =
+            metricsHtml_instruct;
+          Prism.highlightElement(document.getElementById("text_to_code_response"));
+        } else {
+          document.getElementById("text_to_code_desc").textContent =
+            "No data available";
+          document.getElementById("text_to_code_response").textContent =
+            "No data available";
+          document.getElementById("text_to_code_metrics").textContent =
+            "No data available";
+          Prism.highlightElement(document.getElementById("text_to_code_response"));
         }
 
-        function updateTotalPages() {
-          $("#totalPages").text(totalPages);
-        }
-        async function _updateData(idx, model, withPolicy, cweID) {
-          const results = await loadInsecureCodingResults(
-            model,
-            withPolicy,
-            cweID
+        if (sampleData_autocompletion !== null) {
+          let prompt_autocompletion = sampleData_autocompletion.messages[0].content;
+          let response_autocompletion = sampleData_autocompletion.response;
+          let metricsHtml_autocompletion = displayMetrics(
+            sampleData_autocompletion.metrics.new
           );
 
-          function displayMetrics(metrics) {
-            return `<span class="metric">Security: ${metrics.security}</span><br><span class="metric"> Functionality: ${metrics.capability} </span>`;
-          }
-
-          totalPages = results.length;
-          updateTotalPages();
-
-          const sampleData_instruct = results[idx - 1][0];
-          const sampleData_autocompletion = results[idx - 1][1];
-          
-          if (sampleData_instruct !== null) {
-            let prompt_instruct = sampleData_instruct.messages[0].content;
-            let response_instruct = sampleData_instruct.response;
-            let metricsHtml_instruct = displayMetrics(sampleData_instruct.metrics.new);
-            document.getElementById('text_to_code_desc').textContent = prompt_instruct;
-            document.getElementById('text_to_code_response').textContent = response_instruct;
-            document.getElementById('text_to_code_metrics').innerHTML = metricsHtml_instruct;
-            Prism.highlightElement(document.getElementById('text_to_code_response'));
-          } else {
-            document.getElementById('text_to_code_desc').textContent = "No data available";
-            document.getElementById('text_to_code_response').textContent = "No data available";
-            document.getElementById('text_to_code_metrics').textContent = "No data available";
-            Prism.highlightElement(document.getElementById('text_to_code_response'));
-          }
-
-          if (sampleData_autocompletion !== null) {
-            let prompt_autocompletion = sampleData_autocompletion.messages[0].content;
-            let response_autocompletion = sampleData_autocompletion.response;
-            let metricsHtml_autocompletion = displayMetrics(sampleData_autocompletion.metrics.new);
-  
-            document.getElementById('autocompletion_prompt').textContent = prompt_autocompletion;
-            document.getElementById('autocompletion_response').textContent = response_autocompletion;
-            document.getElementById('autocompletion_metrics').innerHTML = metricsHtml_autocompletion;
-            Prism.highlightElement(document.getElementById('autocompletion_response'));
-          } else {
-            document.getElementById('autocompletion_prompt').textContent = "No data available";
-            document.getElementById('autocompletion_response').textContent = "No data available";
-            document.getElementById('autocompletion_metrics').textContent = "No data available";
-            Prism.highlightElement(document.getElementById('autocompletion_response'));
-          }
-
+          document.getElementById("autocompletion_prompt").textContent =
+            prompt_autocompletion;
+          document.getElementById("autocompletion_response").textContent =
+            response_autocompletion;
+          document.getElementById("autocompletion_metrics").innerHTML =
+            metricsHtml_autocompletion;
+          Prism.highlightElement(document.getElementById("autocompletion_response"));
+        } else {
+          document.getElementById("autocompletion_prompt").textContent =
+            "No data available";
+          document.getElementById("autocompletion_response").textContent =
+            "No data available";
+          document.getElementById("autocompletion_metrics").textContent =
+            "No data available";
+          Prism.highlightElement(document.getElementById("autocompletion_response"));
         }
+      }
 
-        const updateData = () => _updateData(currentPage, currentModel, currentWithPolicy, currentCWE).catch(console.error);
+      async function _updateCyberattackHelpfulnessData(idx, model, task) {
+        const systemPromptElement = document.getElementById("cyberattack_helpfulness_system_prompt");
+        const chatHistoryElement = document.getElementById("cyberattack_helpfulness_chat_history");
+        if (model !== "gpt-4o-2024-08-06" || task !== "Weaponization & Infiltration") {
+          systemPromptElement.innerText = "coming soon...";
+          chatHistoryElement.innerText = "coming soon...";
+          return;
+        }
+        // example data
+        totalPages = 1;
+        $("#totalPages").text(totalPages);
 
-        // init
+        const response1 = await fetch(
+          "./results/cyberattack_helpfulness/example_system_prompt.txt"
+        );
+        const exampleSystemPrompt = await response1.text();
+        systemPromptElement.innerText = exampleSystemPrompt;
+
+        const response2 = await fetch(
+          "./results/cyberattack_helpfulness/example_chat_history.json"
+        )
+
+        const chatHistory = await response2.json();
+
+        const chatHistoryHtml = chatHistory.map((chat) => {
+          return `<div class="chat-role">${chat.role}</div><div><pre class="chat-${chat.role}-message" style="white-space: pre-wrap; word-wrap: break-word;">${chat.content}</pre><div>`;
+        });
+
+        chatHistoryElement.innerHTML = chatHistoryHtml.join("");
+      }
+
+
+      const updateData = () => {
+        if (taskType === "insecure_coding") {
+          _updateInsecureCodingData(currentPage, currentModel, currentWithPolicy, currentSubType).catch(console.error);
+        } else if (taskType === "cyberattack_helpfulness") {
+          _updateCyberattackHelpfulnessData(currentPage, currentModel, currentSubType).catch(console.error);
+        }
+      };
+      // init
+      updateData();
+
+      $('#models').change(function () {
+        currentModel = $(this).val();
+        currentPage = 1;
+        $("#currentPage").text(currentPage);
         updateData();
+        updateButtonStatus();
+      });
 
-        $('#models').change(function() {
-          currentModel = $(this).val();
-          currentPage = 1;
-          $("#currentPage").text(currentPage);
-          updateData();
-          updateButtonStatus();
-        });
+      $('#task_type').change(function () {
+        taskType = $(this).val();
+        initStatus();
+        updateData();
+        updateButtonStatus();
+      });
 
-        $('#task_type, #sub_type').change(function() {
-          currentCWE = $('#sub_type').val();
-          currentPage = 1;
-          $("#currentPage").text(currentPage);
-          updateData();
-          updateButtonStatus();
-        });
+      $('#sub_type').change(function () {
+        currentSubType = $(this).val();
+        currentPage = 1;
+        $("#currentPage").text(currentPage);
+        updateData();
+        updateButtonStatus();
+      });
 
-        $('#security_policy').change(function() {
-          currentWithPolicy = $(this).val();
-          currentPage = 1;
-          $("#currentPage").text(currentPage);
-          updateData();
-          updateButtonStatus();
-        });
+      $('#security_policy').change(function () {
+        currentWithPolicy = $(this).val();
+        currentPage = 1;
+        $("#currentPage").text(currentPage);
+        updateData();
+        updateButtonStatus();
+      });
 
-        function updateButtonStatus() {
-          // Disable the left button if at the beginning
-          if (currentPage <= 1) {
-            $("#leftButton").prop("disabled", true);
-          } else {
-            $("#leftButton").prop("disabled", false);
-          }
-
-          // Disable the right button if at the end
-          if (currentPage >= totalPages) {
-            $("#rightButton").prop("disabled", true);
-          } else {
-            $("#rightButton").prop("disabled", false);
-          }
+      function updateButtonStatus() {
+        // Disable the left button if at the beginning
+        if (currentPage <= 1) {
+          $("#leftButton").prop("disabled", true);
+        } else {
+          $("#leftButton").prop("disabled", false);
         }
 
-        // Initial button status update
-        updateButtonStatus();
+        // Disable the right button if at the end
+        if (currentPage >= totalPages) {
+          $("#rightButton").prop("disabled", true);
+        } else {
+          $("#rightButton").prop("disabled", false);
+        }
+      }
 
-        $("#leftButton").click(function () {
-          if (currentPage > 1) {
-            currentPage--;
-            $("#currentPage").text(currentPage);
-            updateData();
-          }
-          updateButtonStatus();
-        });
+      // Initial button status update
+      updateButtonStatus();
 
-        $("#randButton").click(function () {
-          currentPage = Math.floor(Math.random() * totalPages) + 1;
+      $("#leftButton").click(function () {
+        if (currentPage > 1) {
+          currentPage--;
           $("#currentPage").text(currentPage);
           updateData();
-        });
-
-        $("#rightButton").click(function () {
-          if (currentPage < totalPages) {
-            currentPage++;
-            $("#currentPage").text(currentPage);
-            updateData();
-          }
-          updateButtonStatus();
-        });
-
-        $(document).keydown(function (e) {
-          switch (e.which) {
-            case 37: // left arrow key
-              if (currentPage > 1) {
-                currentPage--;
-                $("#currentPage").text(currentPage);
-                updateData();
-              }
-              updateButtonStatus();
-              break;
-
-            case 39: // right arrow key
-              if (currentPage < totalPages) {
-                currentPage++;
-                $("#currentPage").text(currentPage);
-                updateData();
-              }
-              updateButtonStatus();
-              break;
-
-            default:
-              return; // exit this handler for other keys
-          }
-          e.preventDefault(); // prevent the default action (scroll / move caret)
-        });
-
-        $("#models").change(function(){
-          currentModel = $('#models').val()
-          updateData(currentPage);
-        });
-
-        $("#temps").change(function(){
-          currentTemp = $('#temps').val()
-          updateData(currentPage);
-        });
+        }
+        updateButtonStatus();
       });
-    </script>
-  </body>
+
+      $("#randButton").click(function () {
+        currentPage = Math.floor(Math.random() * totalPages) + 1;
+        $("#currentPage").text(currentPage);
+        updateData();
+      });
+
+      $("#rightButton").click(function () {
+        if (currentPage < totalPages) {
+          currentPage++;
+          $("#currentPage").text(currentPage);
+          updateData();
+        }
+        updateButtonStatus();
+      });
+
+      $(document).keydown(function (e) {
+        switch (e.which) {
+          case 37: // left arrow key
+            if (currentPage > 1) {
+              currentPage--;
+              $("#currentPage").text(currentPage);
+              updateData();
+            }
+            updateButtonStatus();
+            break;
+
+          case 39: // right arrow key
+            if (currentPage < totalPages) {
+              currentPage++;
+              $("#currentPage").text(currentPage);
+              updateData();
+            }
+            updateButtonStatus();
+            break;
+
+          default:
+            return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
+      });
+    });
+  </script>
+</body>
+
 </html>

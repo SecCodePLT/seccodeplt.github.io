@@ -70,3 +70,107 @@ async function loadInsecureCodingResults(model, withPolicy, cweID) {
   const results = await response.json();
   return results;
 }
+
+function updateModelOptions() {
+  var taskType = document.getElementById("task_type").value;
+  var modelSelect = document.getElementById("models");
+
+  modelSelect.innerHTML = ""; // Clear existing options
+
+  if (taskType === "insecure_coding") {
+    var options = INSECURE_CODING_MODELS.map((model) => {
+      return { value: model, text: getModelDisplayName(model) };
+    });
+  } else if (taskType === "cyberattack_helpfulness") {
+    var options = [
+      { value: "gpt-4o-2024-08-06", text: "GPT-4o" },
+      {
+        value: "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+        text: "LLaMA-3.1-70B",
+      },
+      { value: "claude-3.5-sonnet", text: "Claude-3.5-Sonnet" },
+    ];
+  }
+  modelSelect.value = options[0].value;
+
+  options.forEach(function (option) {
+    var opt = document.createElement("option");
+    opt.value = option.value;
+    opt.textContent = option.text;
+    modelSelect.appendChild(opt);
+  });
+}
+
+function updateTypeOptions() {
+  var taskType = document.getElementById("task_type").value;
+  var subTypeSelect = document.getElementById("sub_type");
+  var subTypeLabel = document.getElementById("sub_type_label");
+
+  subTypeSelect.innerHTML = ""; // Clear existing options
+
+  if (taskType === "insecure_coding") {
+    subTypeLabel.textContent = "Vulnerability Type (CWE):";
+    var options = CWE_IDS.map((cwe) => {
+      return { value: cwe, text: getCWEDescription(cwe) };
+    });
+  } else if (taskType === "cyberattack_helpfulness") {
+    subTypeLabel.textContent = "Cyberattack Type:";
+    var options = [
+      "Weaponization & Infiltration",
+      "Reconnaissance",
+      "Command and control (C2) & Execution",
+      "Discovery",
+      "Collection",
+    ];
+    options = options.map((type) => {
+      return { value: type, text: type };
+    });
+  }
+
+  subTypeSelect.value = options[0].value;
+
+  options.forEach(function (option) {
+    var opt = document.createElement("option");
+    opt.value = option.value;
+    opt.textContent = option.text;
+    subTypeSelect.appendChild(opt);
+  });
+}
+
+function selectTaskType(taskType) {
+  const taskTypeElem = document.getElementById("task_type");
+  taskTypeElem.value = taskType;
+
+  updateTypeOptions();
+  updateModelOptions(); // Add this line
+
+  taskTypeElem.dispatchEvent(new Event("change"));
+
+  document
+    .getElementById("insecure_coding_btn")
+    .classList.toggle("btn-primary", taskType === "insecure_coding");
+  document
+    .getElementById("insecure_coding_btn")
+    .classList.toggle("btn-light", taskType !== "insecure_coding");
+  document
+    .getElementById("cyberattack_helpfulness_btn")
+    .classList.toggle("btn-primary", taskType === "cyberattack_helpfulness");
+  document
+    .getElementById("cyberattack_helpfulness_btn")
+    .classList.toggle("btn-light", taskType !== "cyberattack_helpfulness");
+  const policyElement = document.getElementById("security_policy_field");
+  if (taskType === "insecure_coding") {
+    policyElement.style.display = "block";
+    document
+      .getElementById("insecure_coding_viewer")
+      .style.removeProperty("display");
+    document.getElementById("cyberattack_helpfulness_viewer").style.display =
+      "none";
+  } else if (taskType === "cyberattack_helpfulness") {
+    policyElement.style.display = "none";
+    document.getElementById("insecure_coding_viewer").style.display = "none";
+    document
+      .getElementById("cyberattack_helpfulness_viewer")
+      .style.removeProperty("display");
+  }
+}
