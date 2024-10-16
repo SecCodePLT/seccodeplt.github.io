@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SecCodePLT: A Unified Platform for Evaluating the Security of Code GenAI">
+  <meta name="keywords" content="code, LLM, code generation, program synthesis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SecCodePLT: A Unified Platform for Evaluating the Security of Code GenAI</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <i class="fas fa-shield-alt"></i> SecCodePLT: A Unified Platform for Evaluating the Security of Code GenAI
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://sites.google.com/g.ucla.edu/yuyang/home">Yu Yang*</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://rucnyz.github.io/">Yuzhou Nie*</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=JG_3xhEAAAAJ">Zhun Wang*</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Yuheng_Tang1">Yuheng Tang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://henrygwb.github.io/">Wenbo Guo</a><sup>1,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://aisecure.github.io/">Bo Li</a><sup>1,5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://dawnsong.io/">Dawn Song</a><sup>1,4</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Virtue AI</span>
+            <span class="author-block"><sup>2</sup>UC Los Angeles</span>
+            <span class="author-block"><sup>3</sup>UC Santa Barbara</span>
+            <span class="author-block"><sup>4</sup>UC Berkeley</span>
+            <span class="author-block"><sup>5</sup>UIUC</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">* Equal contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+                <span class="link-block">
+                <a href="https://arxiv.org/pdf/2410.11096"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                </a>
+                </span>
+        
+                <!-- <span class="link-block">
+                <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                </a>
+                </span> -->
+        
+                <span class="link-block">
+                <a href="https://huggingface.co/datasets/Virtue-AI-HUB/SecCodePLT"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="far fa-images"></i>
+                    </span>
+                    <span>HF Dataset</span>
+                </a>
+                </span>
+
+                <!-- <span class="link-block">
+                    <a href="./leaderboard.html"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fa fa-trophy"></i>
+                    </span>
+                    <span>Leaderboard</span>
+                </a>
+                </span> -->
+
+                <span class="link-block">
+                    <a href="./demo.html"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <span>Sample Explorer</span>
+                </a>
+                </span>
+            </div>
+          </div>
+
+          <br>
+          <!-- <img src="./images/examples.png" width="100%"/> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="margin:0; padding:0;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Motivation</h2>
+        <div class="content has-text-justified" style="font-size: 120%;">
+          <p>
+            Existing works have established multiple benchmarks to highlight the security risks associated with Code GenAI.
+            These risks are primarily reflected in two areas: a model's potential to generate insecure code (<b>insecure coding</b>) and its utility in cyberattacks (<b>cyberattack helpfulness</b>).
+          </p>
+          <p>
+            While these benchmarks have made significant strides, there remain opportunities for further improvement.
+            <ul>
+            <li>Many current benchmarks tend to focus more on a model's ability to provide attack suggestions rather than its capacity to generate executable attacks.</li>
+            <li>Most benchmarks rely heavily on static evaluation metrics (e.g., LLM judgment), which may not be as precise as dynamic metrics such as passing test cases.</li>
+            <li>Some large-scale benchmarks, while efficiently generated through automated methods, could benefit from more expert verification to ensure data quality and relevance to security scenarios.</li>
+            <li>Expert-verified benchmarks, while offering high-quality data, often operate at a smaller scale.</li>
+            </ul>
+          </p>
+
+          <p>
+            To address these gaps, we develop <i class="fas fa-shield-alt"></i> <b>SecCodePLT</b>, a unified and comprehensive evaluation platform for code GenAIs' risks. 
+            To the best of our knowledge, this is the first platform to enable <i>precise security risks evaluation</i>  and <i>end-to-end cyberattack helpfulness assessment</i> of code GenAI.
+            <br>
+            <br>
+            Additionally, we are <i>the first</i> to reveal the security risks in <a href="https://www.cursor.com/">Cursor</a>, a popular AI code editor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Task 1: Insecure Coding</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              We introduce a two-stage data creation pipeline, which enables scalability and
+              ensures data quality. 
+                <ol>
+                <li> Our method starts with generating a few seed samples for each selected
+                  type of vulnerability, i.e., one MITRE's Common Weakness Enumeration (CWE) (MITRE, 2024b),
+                  and then employs LLM-based mutators to generate more data from these seeds. </li>
+                <li> We include a validation step to filter out incorrect data, balancing correctness and scalability. More specifically, our
+                  seed generation begins by analyzing the vulnerability and context of a given CWE to manually cre-
+                  ate several security-related coding tasks.   </li>
+                <li> For each task, we generate both vulnerable and patched
+                  code versions, along with functionality and security test cases. In cases that cannot be evaluated
+                  with standard test cases, we establish detailed rules for vulnerability detection. Each task, including its description, code and tests, forms a seed. </li>
+                </ol>
+                Given that all seeds are created and verified by
+                  human experts, they are guaranteed to be security-related. As detailed in Section 3, our automatic
+                  and validate process will also ensure the security relevance and correctness of newly generated data.
+                  Additionally, our samples contain both text descriptions and example code, enabling both instruc-
+                  tion generation and code completion tasks. 
+                  <br>
+                  <br>
+                  After generating the benchmark, we further design
+                  hybrid evaluation metrics that combine dynamic testing with rule-based detection for identifying
+                  insecure code. As discussed in Chhabra & Gupta (2010), hybrid metrics are more precise than pure
+                  static metrics. 
+            </p>
+          </div>
+          <img src="./images/insecure_data_pipeline.svg"/>
+          <p style="text-align: center; margin-top: 10px;">Figure 1: Insecure Coding Data Pipeline</p>
+        </div>
+      </div>
+  </section>
+
+  <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Task 2: Cyberattack Helpfulness</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              We then construct a cyberattack helpfulness benchmark to evaluate a
+              model's capability in facilitating end-to-end cyberattacks. 
+                <ol>
+                <li> Following MITRE ATT&CK (MITRE,
+                  2024a), we break down a typical cyberattack into multiple steps, treating each as a category to guide
+                  the model's ability to perform specific aspects of an attack, such as writing exploits and deploying
+                  attacks.</li>
+                <li> We then design tailored prompts for each category to guide the model to generate
+                  executable attacks. </li>
+                <li> Finally, we create an environment with metrics to dynamically evaluate a
+                  model's outputted attack for each category. </li>
+                </ol>
+            </p>
+          </div>
+          <img src="./images/cyberattack_helpfulness.svg" width="40%"/>
+          <p style="text-align: center; margin-top: 10px;">Figure 2: Cyberattack Helpfulness Evaluation Framework</p>
+        </div>
+      </div>
+  </section>
+
+  <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Key Findings</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              1. <i class="fas fa-shield-alt"></i> SecCodePLT achieves nearly 100% in both security relevance and instruction faithfulness, demonstrating its high quality. In contrast, CyberSecEval achieves only 68% and 42% on security relevance and instruction faithfulness, with 3 CWEs receiving scores lower than 30%.               
+            </p>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <div style="width: 48%;">
+              <img src="./images/relevance.svg" width="100%"/>
+              <p style="text-align: center; margin-top: 10px;">Figure 3: Security Relevance Comparison</p>
+            </div>
+            <div style="width: 48%;">
+              <img src="./images/functionality.svg" width="100%"/>
+              <p style="text-align: center; margin-top: 10px;">Figure 4: Instruction Faithfulness Comparison</p>
+            </div>
+          </div>
+          <br>
+          <br> 
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              2. When testing <i class="fas fa-shield-alt"></i> SecCodePLT against SOTA models on instruction generation and code completion tasks, <code>GPT-4o</code> is the most secure model, achieving a 55% secure coding rate. 
+              A larger model tends to be more secure.
+              However, there remains significant room for further improvement. 
+            </p>
+            <p>
+              3. Providing security policy reminders to highlight the potential vulnerabilities improves the secure coding rate by approximately 20%.
+            </p>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <div style="width: 40%;">
+              <img src="./images/instruct.svg" width="100%"/>
+              <p style="text-align: center; margin-top: 10px;">Figure 5: Instruction Generation Results</p>
+            </div>
+            <div style="width: 18%;">
+              <img src="./images/legend.svg" width="100%"/>
+            </div>
+            <div style="width: 40%;">
+              <img src="./images/autocomplete.svg" width="100%"/>
+              <p style="text-align: center; margin-top: 10px;">Figure 6: Code Completion Results</p>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              4. <code>GPT-4o</code> can launch full end-to-end cyberattacks but with a low success rate, while <code>Claude</code> is much safer in assisting attackers implement attacks with over a 90% refusal rate on sensitive attack steps.
+            </p>
+          </div>
+          <img src="./images/helpfulness_comparison.svg" width="85%"/>
+          <p style="text-align: center; margin-top: 10px;">Figure 7: Comparison of AI Models' Helpfulness in Cyberattacks</p>
+          <br>
+          <br>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              5. Cursor achieves an overall around 60% secure coding rate but fails entirely on some critical CWEs.
+              Besides its different functionalities have different levels of risks.
+            </p>
+          </div>
+          <img src="./images/cursor_scores.svg" width="90%"/>
+          <br>
+          <br>
+           
+        </div>
+      </div>
+  </section>
+
+  <!-- <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Cursor Failures</h2>
+          <div class="content has-text-justified" style="font-size: 120%;">
+            <p>
+              Finally, using our platform, we identify security risks in the SOTA code agent, Cursor. We find that the cursor fails entirely on some critical CWEs representing code injection, access control, and data leakage prevention. 
+            </p>
+          </div>
+          <img src="./images/.png" width="75%"/>
+          <br>
+          <br>
+          </div>
+        </div>
+      </div>
+  </section> -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+@misc{yang2024seccodeplt,
+  title={SecCodePLT: A Unified Platform for Evaluating the Security of Code GenAI}, 
+  author={Yu Yang and Yuzhou Nie and Zhun Wang and Yuheng Tang and Wenbo Guo and Bo Li and Dawn Song},
+  year={2024},
+  eprint={2410.11096},
+  archivePrefix={arXiv},
+  primaryClass={cs.CR},
+  url={https://arxiv.org/abs/2410.11096}, 
+}
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The source code from this website is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">this template</a>!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
