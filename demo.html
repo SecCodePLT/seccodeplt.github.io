@@ -459,13 +459,15 @@
             let response_autocompletion = sampleData_autocompletion.response;
             let metricsHtml_autocompletion = displayMetrics(sampleData_autocompletion.metrics.new);
   
-            document.getElementById('autocompletion_prompt').innerText = prompt_autocompletion;
-            document.getElementById('autocompletion_response').innerText = response_autocompletion;
+            document.getElementById('autocompletion_prompt').textContent = prompt_autocompletion;
+            document.getElementById('autocompletion_response').textContent = response_autocompletion;
             document.getElementById('autocompletion_metrics').innerHTML = metricsHtml_autocompletion;
+            Prism.highlightElement(document.getElementById('autocompletion_response'));
           } else {
-            document.getElementById('autocompletion_prompt').innerText = "No data available";
-            document.getElementById('autocompletion_response').innerText = "No data available";
-            document.getElementById('autocompletion_metrics').innerText = "No data available";
+            document.getElementById('autocompletion_prompt').textContent = "No data available";
+            document.getElementById('autocompletion_response').textContent = "No data available";
+            document.getElementById('autocompletion_metrics').textContent = "No data available";
+            Prism.highlightElement(document.getElementById('autocompletion_response'));
           }
 
         }
