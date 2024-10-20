@@ -7,7 +7,6 @@
   <title>SecCodePLT Sample Explorer</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="shortcut icon" href="#" />
-  <link href="static/css/prism.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
@@ -18,10 +17,12 @@
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <!-- <link rel="stylesheet" href="./static/css/index.css"> -->
   <link rel="icon" href="./static/images/favicon.svg">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-light.min.css" integrity="sha512-o5v54Kh5PH0dgnf9ei0L+vMRsbm5fvIvnR/XkrZZjN4mqdaeH7PW66tumBoQVIaKNVrLCZiBEfHzRY4JJSMK/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
@@ -158,13 +159,6 @@
 </head>
 
 <body>
-  <script src="static/js/prism.js" data-manual>
-    Prism.hooks.add("before-highlight", function (env) {
-      env.code = env.element.innerText;
-    });
-    Prism.highlightElement(code);
-  </script>
-
   <div id="content" class="container-fluid d-flex flex-column align-items-center gap-3">
     <h1 style="padding-top: 20px;" class="title is-1 publication-title">🔎 SecCodePLT Sample Explorer 🔎</h1>
     <h3 class="fw-light text-center title is-3"><small id="warning">SecCodePLT is a unified and comprehensive evaluation
@@ -408,11 +402,9 @@
           let response_instruct = sampleData_instruct.response;
           let metricsHtml_instruct = displayMetrics(sampleData_instruct.metrics.new);
           document.getElementById("text_to_code_desc").textContent = prompt_instruct;
-          document.getElementById("text_to_code_response").textContent =
-            response_instruct;
+          document.getElementById("text_to_code_response").innerHTML = hljs.highlight(response_instruct, { language: "python" }).value;
           document.getElementById("text_to_code_metrics").innerHTML =
             metricsHtml_instruct;
-          Prism.highlightElement(document.getElementById("text_to_code_response"));
         } else {
           document.getElementById("text_to_code_desc").textContent =
             "No data available";
@@ -420,7 +412,6 @@
             "No data available";
           document.getElementById("text_to_code_metrics").textContent =
             "No data available";
-          Prism.highlightElement(document.getElementById("text_to_code_response"));
         }
 
         if (sampleData_autocompletion !== null) {
@@ -432,11 +423,10 @@
 
           document.getElementById("autocompletion_prompt").textContent =
             prompt_autocompletion;
-          document.getElementById("autocompletion_response").textContent =
-            response_autocompletion;
+          document.getElementById("autocompletion_response").innerHTML =
+            hljs.highlight(response_autocompletion, { language: "python" }).value;
           document.getElementById("autocompletion_metrics").innerHTML =
             metricsHtml_autocompletion;
-          Prism.highlightElement(document.getElementById("autocompletion_response"));
         } else {
           document.getElementById("autocompletion_prompt").textContent =
             "No data available";
@@ -444,7 +434,6 @@
             "No data available";
           document.getElementById("autocompletion_metrics").textContent =
             "No data available";
-          Prism.highlightElement(document.getElementById("autocompletion_response"));
         }
       }
 
